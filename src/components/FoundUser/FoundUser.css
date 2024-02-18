@@ -9,51 +9,33 @@
   max-width: 250px;
   height: 30px;
 }
-.friend-profile-container {
+/* .friend-profile-container {
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: 5rem 3rem;
-  /* height: 600px; */
-}
 
-.friend-profile-info-top {
+} */
+
+/* .friend-profile-info-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 50rem;
   padding-bottom: 50px;
   border-bottom: solid 1px #d9d9d9;
-}
+} */
 
 .friend-wishlist-ul {
   padding-inline-start: 0px;
   list-style: none;
 }
 
-.friend-wishlist-top-left-side {
-  display: flex;
-  justify-content: flex-start;
-}
-
-.friend-user-profile {
-  width: 220px;
-  height: 220px;
-  overflow: hidden;
-  border-radius: 50%;
-  width: 110px;
-  height: 110px;
-  margin-top: 3px;
-  margin-right: 20px;
-  border-radius: 50%;
-  background: #e0e0e0;
-  box-shadow: 5px 5px 10px #ffe9e9, -5px -5px 10px #ffffe7;
-}
-.friend-user-names h2 {
+/* .friend-user-names h2 {
   padding: 10px 0px 0px 0px;
   text-align: left;
   color: #303030;
-}
+} */
 
 .friend-user-names p {
   text-align: left;
@@ -64,7 +46,6 @@
 .friend-wishlist-list-container {
   position: relative;
   margin-top: 20px;
-  /* height: 500px; */
 }
 
 .friend-wishlist-list-item {
@@ -430,7 +411,7 @@ a.friend-wish-list-item-link {
 
   .itembody {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     height: auto;
   }
 
@@ -531,4 +512,43 @@ a.friend-wish-list-item-link {
   font-size: 1.3rem;
   transition: transform 300ms ease;
   z-index: 10;
+}
+
+.friend-profile-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 5rem 3rem;
+  & .__info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50rem;
+    padding-bottom: 50px;
+    border-bottom: solid 1px #d9d9d9;
+    & .__left-side {
+      display: flex;
+      justify-content: flex-start;
+      & .__user-profile {
+        width: 220px;
+        height: 220px;
+        overflow: hidden;
+        border-radius: 50%;
+        width: 110px;
+        height: 110px;
+        margin-top: 3px;
+        margin-right: 20px;
+        border-radius: 50%;
+        background: #e0e0e0;
+        box-shadow: 5px 5px 10px #ffe9e9, -5px -5px 10px #ffffe7;
+      }
+      & .__usernames {
+        & .__title {
+          padding: 10px 0px 0px 0px;
+          text-align: left;
+          color: #303030;
+        }
+      }
+    }
+  }
 }

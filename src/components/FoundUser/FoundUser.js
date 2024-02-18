@@ -68,18 +68,93 @@ function FoundUser() {
   );
 
   return (
+    /* <div className="friend-profile-container">
+    //   <div className="friend-profile-info-top">
+    //     <div className="friend-wishlist-top-left-side">
+    //       <img
+    //         alt="friend-user-profile"
+    //         className="friend-user-profile"
+    //         src={`${
+    //           userInfo.user_picture ? userInfo.user_picture : profileImg
+    //         }`}
+    //       />
+    //       <div className="friend-user-names">
+    //         <h2>
+    //           {toggleFullView
+    //             ? `${userInfo?.first_name} ${userInfo?.last_name}`
+    //             : `${userInfo?.user_name}`}
+    //         </h2>
+    //         <p>{userInfo.user_name}</p>
+    //         <p className="friend-user-dob">
+    //           {toggleFullView
+    //             ? `${fullMonthOfUpcomingBirthday} ${dayNumOfUpcomingBirthDay}`
+    //             : "Please sign in or make an account to view their birthday"}
+    //         </p>
+    //         {areFriends ? (
+    //           <button
+    //             className="expandedBtn"
+    //             onClick={() =>
+    //               navigate(`/dashboard/${loggedInID}/friends/${userInfo.id}`)
+    //             }
+    //           >
+    //             More Details
+    //           </button>
+    //         ) : (
+    //           <></>
+    //         )}
+    //       </div>
+    //     </div>
+    //     <div className="friend-wishlist-top-right-side">
+    //       {toggleFullView ? (
+    //         <>{!areFriends ? <SearchListBtn targetUser={userInfo} /> : <></>}</>
+    //       ) : (
+    //         <></>
+    //       )}
+    //     </div>
+    //   </div>
+    //   <div className="friend-wishlist-list-container">
+    //     <ul className="friend-wishlist-ul">
+    //       {userwishlist.length === 0 ? (
+    //         <li>This user has no wishlist items</li>
+    //       ) : (
+    //         <>
+    //           {userwishlist.map((item) => {
+    //             return (
+    //               <li key={item.id}>
+    //                 <div className="wishlistItem">
+    //                   <div className="itemGlow"></div>
+    //                   <div className="itemBorderGlow"></div>
+    //                   <div className="itemBody">
+    //                     <div className="itemTitle">
+    //                       {item.item_name.charAt(0).toUpperCase() +
+    //                         item.item_name.slice(1)}
+    //                     </div>
+    //                   </div>
+    //                 </div>
+    //               </li>
+    //             );
+    //           })}
+    //         </>
+    //       )}
+    //     </ul>
+    //   </div>
+    //   <div className="back-left-arrow-container" onClick={() => navigate(-1)}>
+    //     <TbArrowLeft size={65} />
+    //   </div>
+     </div>*/
+    //-----------------------------------------------------//
     <div className="friend-profile-container">
-      <div className="friend-profile-info-top">
-        <div className="friend-wishlist-top-left-side">
+      <div className="__info-top">
+        <div className="__left-side">
           <img
             alt="friend-user-profile"
-            className="friend-user-profile"
+            className="__user-profile"
             src={`${
               userInfo.user_picture ? userInfo.user_picture : profileImg
             }`}
           />
-          <div className="friend-user-names">
-            <h2>
+          <div className="__usernames">
+            <h2 className="__title">
               {toggleFullView
                 ? `${userInfo?.first_name} ${userInfo?.last_name}`
                 : `${userInfo?.user_name}`}

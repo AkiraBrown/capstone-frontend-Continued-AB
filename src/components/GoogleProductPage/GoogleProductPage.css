@@ -1,0 +1,10 @@
+.search-form {
+  justify-self: center;
+  & input {
+    width: 300px;
+    border-radius: 10px 0 0 10px;
+  }
+  & button {
+    border-radius: 0 10px 10px 0;
+  }
+}

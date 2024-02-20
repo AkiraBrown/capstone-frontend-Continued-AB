@@ -50,6 +50,9 @@ const FriendsProfile = React.lazy(() =>
 const EditableUserProfile = React.lazy(() =>
   import("./components/Dashboard/EditableUserProfile/EditableUserProfile")
 );
+const GoogleProductPage = React.lazy(() =>
+  import("./components/GoogleProductPage/GoogleProductPage")
+);
 
 function App() {
   const [user, setUser] = useState(null);
@@ -185,6 +188,10 @@ function App() {
                 }
               />
               {/* <Route path="/dashboard/events" element={<Map />} /> */}
+              <Route
+                path="/dashboard/search-product"
+                element={<GoogleProductPage />}
+              />
             </Routes>
           </div>
         </main>

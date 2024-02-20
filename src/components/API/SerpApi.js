@@ -1,21 +1,20 @@
-const { getJson } = require("serpapi");
+import Axios from "./Axios";
 
-async function handleShoppingSearch(search, region = "us", language = "en") {
-  getJson(
-    {
-      api_key: process.env.SERP_API_KEY,
-      engine: "google_shopping",
-      google_domain: "google.com",
-      gl: region,
-      hl: language,
-      q: search,
-    },
-    (json) => {
-      console.log(json);
-    }
-  );
+async function handleUserSearch(data) {
+  try {
+    let response = await Axios.post("/serp/search", data);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+async function checkBackendActive() {
+  try {
+    const response = await Axios.get("/serp");
+    return response.data;
+  } catch (error) {
+    return error;
+  }
 }
 
-module.exports = {
-  handleShoppingSearch,
-};
+export { handleUserSearch, checkBackendActive };

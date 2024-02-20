@@ -2,10 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./NotiUnit.css";
 import { addNewFriend, updateNotification } from "../../API/API";
 import { toast } from "react-toastify";
-import {
-  FriendsContext,
-  NotificationContext,
-} from "../../common/context/context";
+import { FriendsContext } from "../../common/context/context";
 
 // Icon Imports
 import { IoMdMore } from "react-icons/io";
@@ -15,8 +12,7 @@ import { ImCross } from "react-icons/im";
 
 function NotiUnit({ data, handleDeleteNoti }) {
   const { setToggleUpdate } = useContext(FriendsContext);
-  const { NotificationsData, toggleUpdate, setNotificationsData } =
-    useContext(NotificationContext);
+
   const [collection, setCollection] = useState(data);
   const [formatDate, setFormatDate] = useState("");
   const [isReadValue, setIsReadValue] = useState(data?.is_read);

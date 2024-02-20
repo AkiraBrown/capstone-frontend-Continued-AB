@@ -69,9 +69,9 @@ function SidebarNav() {
       console.log(error);
     }
   }
-  
+
   // let userPic = user?.user_picture.includes("http")? user?.user_picture : userProfileImg;
-  
+
   return (
     <div className="sidebar-nav-container">
       <div className="sidebar-nav-content">
@@ -115,6 +115,11 @@ function SidebarNav() {
             <li key="profile" className="sidebarItem">
               <NavLink to={`/dashboard/${user?.id}/editProfile`}>
                 Profile
+              </NavLink>
+            </li>
+            <li key="search-products" className="sidebarItem">
+              <NavLink to={`/dashboard/search-product`}>
+                Search Products
               </NavLink>
             </li>
           </ul>

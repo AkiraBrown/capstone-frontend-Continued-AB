@@ -1,0 +1,23 @@
+.page-container {
+  padding: 30px;
+  justify-self: center;
+  text-align: center;
+}
+.search-form {
+  justify-self: center;
+  margin: 30px;
+  height: 30px;
+  &__searchbar {
+    width: 300px;
+    border-radius: 10px 0 0 10px;
+  }
+  & button {
+    border-radius: 0 10px 10px 0;
+  }
+}
+.products-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 20px;
+  text-align: center;
+}

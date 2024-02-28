@@ -31,7 +31,6 @@ function SidebarNav() {
       setToggleUpdate(false);
       let userFromStorage = localStorage.getItem("user");
       let storedUser = JSON.parse(userFromStorage);
-      // console.log(storedUser);
       getNotifications(storedUser?.id);
       setUser(storedUser);
     }

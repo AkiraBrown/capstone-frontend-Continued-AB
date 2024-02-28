@@ -2,7 +2,6 @@ import React from "react";
 import "./Hamburger.css";
 
 function Hamburger({ hamburgerOpen }) {
-  console.log(hamburgerOpen);
   return (
     <div className="hamburger">
       <div

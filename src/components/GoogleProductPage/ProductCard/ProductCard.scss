@@ -1,0 +1,33 @@
+.card {
+  // max-width: 300px;
+  // width: 300px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  position: relative;
+
+  &__thumbnail {
+    height: 200px;
+    width: 200px;
+  }
+  &__title {
+    font-size: 14px;
+  }
+  &__price {
+    font-style: italic;
+    font-size: large;
+  }
+  &__wishlistBtn {
+    position: sticky;
+    top: 90%;
+    border: none;
+    background-color: #c89aff;
+    padding: 12px;
+    width: 100%;
+    &:hover {
+      cursor: pointer;
+      background-color: #ac68ff;
+    }
+  }
+}

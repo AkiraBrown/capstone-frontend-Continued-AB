@@ -3,62 +3,60 @@ import { NavLink } from "react-router-dom";
 import { FriendsContext } from "../common/context/context";
 import { getAllFriendsFromUser } from "../API/API";
 import { TbCake } from "react-icons/tb";
-import "./OpenHamburger.css"
+import "./OpenHamburger.css";
 
 function OpenHamburger() {
-    const [user, setUser] = useState({});
-    const [friendsCount, setFriendsCount] = useState(0);
-  
-    const { setFriendsData, toggleUpdate, setToggleUpdate } =
-      useContext(FriendsContext);
-  
-    useEffect(() => {
+  const [user, setUser] = useState({});
+  const [friendsCount, setFriendsCount] = useState(0);
+
+  const { setFriendsData, toggleUpdate, setToggleUpdate } =
+    useContext(FriendsContext);
+
+  useEffect(() => {
+    let userFromStorage = localStorage.getItem("user");
+    let storedUser = JSON.parse(userFromStorage);
+    setUser(storedUser);
+
+    fetchFriends(storedUser?.id);
+    // eslint-disable-next-line
+  }, []);
+  useEffect(() => {
+    if (toggleUpdate) {
+      fetchFriends(user?.id);
+      setToggleUpdate(false);
       let userFromStorage = localStorage.getItem("user");
       let storedUser = JSON.parse(userFromStorage);
-      console.log(storedUser);
       setUser(storedUser);
-  
-      fetchFriends(storedUser?.id);
-      // eslint-disable-next-line
-    }, []);
-    useEffect(() => {
-      if (toggleUpdate) {
-        fetchFriends(user?.id);
-        setToggleUpdate(false);
-        let userFromStorage = localStorage.getItem("user");
-        let storedUser = JSON.parse(userFromStorage);
-        console.log(storedUser);
-        setUser(storedUser);
-      }
-      // eslint-disable-next-line
-    }, [toggleUpdate]);
-  
-    function formatDate(inputDate) {
-      // Parse the input string into a Date object
-      const dateObject = new Date(inputDate);
-      // EST DateTime Offset
-      const dateObjectESTTimeOffset = dateObject.getTimezoneOffset() * 60 * 1000;
-      dateObject.setTime(dateObject.getTime() + dateObjectESTTimeOffset);
-      // Options for formatting the date
-      const options = { month: "long", day: "numeric" };
-  
-      // Format the date using the specified options
-      const formattedDate = dateObject.toLocaleDateString("en-US", options);
-      return formattedDate;
     }
-  
-    async function fetchFriends(id) {
-      try {
-        let result = await getAllFriendsFromUser(id);
-        setFriendsCount(result.data.length);
-        setFriendsData(result.data);
-      } catch (error) {
-        console.log(error);
-      }
+    // eslint-disable-next-line
+  }, [toggleUpdate]);
+
+  function formatDate(inputDate) {
+    // Parse the input string into a Date object
+    const dateObject = new Date(inputDate);
+    // EST DateTime Offset
+    const dateObjectESTTimeOffset = dateObject.getTimezoneOffset() * 60 * 1000;
+    dateObject.setTime(dateObject.getTime() + dateObjectESTTimeOffset);
+    // Options for formatting the date
+    const options = { month: "long", day: "numeric" };
+
+    // Format the date using the specified options
+    const formattedDate = dateObject.toLocaleDateString("en-US", options);
+    return formattedDate;
+  }
+
+  async function fetchFriends(id) {
+    try {
+      let result = await getAllFriendsFromUser(id);
+      setFriendsCount(result.data.length);
+      setFriendsData(result.data);
+    } catch (error) {
+      console.log(error);
     }
+  }
 
   return (
-        <div className="hamburger-nav-container">
+    <div className="hamburger-nav-container">
       <div className="hamburger-nav-content">
         <div className="hamburger-user-info">
           <img
@@ -106,7 +104,7 @@ function OpenHamburger() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default OpenHamburger
+export default OpenHamburger;

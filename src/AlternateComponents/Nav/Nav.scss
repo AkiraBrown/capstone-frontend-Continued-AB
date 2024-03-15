@@ -1,0 +1,92 @@
+// .topnav {
+//   width: 100%;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-around;
+//   margin-left: 10%;
+//   margin-right: 10%;
+//   &__container {
+//     display: flex;
+//     justify-content: center;
+//     border-bottom: 1px solid #bd8fd2;
+//     &__nav-links {
+//       // margin: -10px 30px 0 0;
+//       display: flex;
+//       align-items: center;
+//       flex-wrap: wrap;
+//       width: 100%;
+//       justify-content: space-between;
+//       & a {
+//         display: flex;
+//         justify-content: center;
+//         color: black;
+//         transition: 0.3s ease-in-out;
+//         font-family: "Hepta Slab", serif;
+//         font-size: large;
+//         width: 100px;
+//         &:hover {
+//           color: rgb(254, 68, 68);
+//           text-decoration: underline;
+//         }
+//       }
+//     }
+//   }
+// }
+.topnav {
+  border-bottom: 1px solid #bd8fd2;
+  display: flex;
+  justify-content: center;
+  &__nav-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+  &__logo-nav {
+    height: auto;
+    width: 17rem;
+  }
+  & a {
+    font-family: "Hepta Slab", serif;
+    font-size: large;
+    text-decoration: none;
+    justify-content: center;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      color: rgb(254, 68, 68);
+      text-decoration: underline;
+    }
+  }
+}
+
+// @media screen and (max-width: 1050px) {
+//   .topnav__container {
+//     &__nav-links {
+//       margin: -10px 60px 0 30px;
+//     }
+//   }
+// }
+// @media screen and (max-width: 850px) {
+//   .topnav__container {
+//     &__nav-links {
+//       padding: 0 40px;
+//       justify-content: space-evenly;
+//     }
+//     &__logo-nav {
+//       margin-right: -45px;
+//       padding: 0 20px;
+//     }
+//   }
+// }
+// @media screen and (max-width: 480px) {
+//   .topnav__container {
+//     &__nav-links {
+//       margin: -10px 60px 0 60px;
+//     }
+//   }
+// }

@@ -9,23 +9,21 @@ main {
   padding: 0px;
   overflow-x: hidden;
 }
-
-.page-content-container {
+.page-container {
   display: flex;
   justify-content: center;
   border-top: 1px solid #f8e8ff;
-}
-
-.page-content {
-  margin: 3rem;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 3fr 9fr;
-  width: 1000px;
+  &__content {
+    margin: 3rem;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    width: 1000px;
+  }
 }
 
 @media only screen and (max-width: 850px) {
-  .page-content {
+  .page-container__content {
     grid-template-columns: 1fr;
     width: 100%;
     margin: 1.875em 0 0 0;

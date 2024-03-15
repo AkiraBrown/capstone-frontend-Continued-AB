@@ -1,11 +1,11 @@
 .card {
-  // max-width: 300px;
-  // width: 300px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   height: 100%;
   align-items: center;
   position: relative;
+  box-sizing: border-box;
 
   &__thumbnail {
     height: 200px;
@@ -29,5 +29,9 @@
       cursor: pointer;
       background-color: #ac68ff;
     }
+  }
+  &:hover {
+    border: solid #ac68ff 0.5px;
+    box-sizing: border-box;
   }
 }

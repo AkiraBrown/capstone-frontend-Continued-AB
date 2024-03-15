@@ -1,6 +1,7 @@
 import { useState, lazy } from "react";
 import "./GoogleProductPage.scss";
 import { handleUserSearch } from "../API/SerpApi";
+import { toast } from "react-toastify";
 const ProductCard = lazy(() => import("./ProductCard/ProductCard"));
 
 function GoogleProductPage() {
@@ -11,11 +12,22 @@ function GoogleProductPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     // setIsLoading(true);
+
     try {
-      let response = await handleUserSearch({ search: searchTerm });
-      setProductArr(response);
+      if (searchTerm) {
+        const formatSearchTerm = searchTerm.replace(/[&=]/g, "");
+        let response = await handleUserSearch(formatSearchTerm);
+        console.log(response);
+        setProductArr(response);
+      } else {
+        throw new Error("Please submit a valid search term");
+      }
     } catch (error) {
       console.log(error);
+      toast.error(
+        "Please submit a valid search term",
+        toast.POSITION.TOP_CENTER
+      );
     }
     // setIsLoading(false);
   }
@@ -35,11 +47,19 @@ function GoogleProductPage() {
             Search
           </button>
         </form>
-        <div className="products-container">
-          {productArr.map((item, index) => {
-            return <ProductCard data={item} key={index} />;
-          })}
-        </div>
+        <section className="products-container">
+          {productArr.length === 0 || !productArr ? (
+            <>
+              <h3>Search for some products</h3>
+            </>
+          ) : (
+            <>
+              {productArr.map((item, index) => {
+                return <ProductCard data={item} key={index} />;
+              })}
+            </>
+          )}
+        </section>
       </div>
     </>
   );

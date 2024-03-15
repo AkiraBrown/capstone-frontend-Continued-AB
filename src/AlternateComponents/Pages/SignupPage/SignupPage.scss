@@ -1,0 +1,112 @@
+.signup {
+  padding: 50px 0;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  &__form {
+    position: relative;
+    text-align: center;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    padding: 32px 24px 24px;
+    max-width: 400px;
+    background: #f1ebfa;
+    border-radius: 16px;
+    color: #010101;
+    &__title {
+      font-weight: bold;
+      font-size: 1.6rem;
+    }
+    &__subtitle {
+      font-size: 1rem;
+      color: #666;
+    }
+    &__container {
+      overflow: hidden;
+      border-radius: 10px;
+      background-color: #fff;
+      margin: 1rem 0 0.5rem;
+      width: 100%;
+      &__input-group {
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &__input {
+          background: none;
+          border: 0;
+          outline: 0;
+
+          &__error {
+            font-size: small;
+            color: red;
+          }
+        }
+        &__dob-group {
+          display: flex;
+          flex-wrap: wrap;
+          font-size: small;
+          padding-left: 7px;
+          padding-bottom: 5px;
+          gap: 10px;
+          &__label {
+            background: none;
+            text-align: center;
+            outline: 0;
+          }
+
+          &__input {
+            border: none;
+          }
+        }
+      }
+      &__submitBtn {
+        background-color: #9949ff;
+        color: white;
+        border: 0;
+        border-radius: 24px;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: 600;
+        padding: 10px 16px;
+        transition: background-color 0.3s ease;
+        &:disabled {
+          background-color: gray;
+        }
+        &:hover {
+          background-color: #005ce6;
+        }
+      }
+      &__redirect {
+        padding: 16px;
+        font-size: 0.85rem;
+        border-radius: 10px;
+
+        & a {
+          font-weight: bold;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          color: #9949ff;
+
+          &:hover {
+            text-decoration: underline;
+            color: #005ce6;
+          }
+        }
+      }
+    }
+    &__error-container {
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      flex-wrap: wrap;
+      &__error {
+        text-align: center;
+        padding: 5px;
+        color: red;
+      }
+    }
+  }
+}

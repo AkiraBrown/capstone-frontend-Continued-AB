@@ -10,60 +10,33 @@ import useAuthHooks from "./AlternateComponents/hooks/auth/useAuthHooks";
 import { AuthContext } from "./AlternateComponents/context/AuthContext/AuthContext";
 
 //_________________ Import Page Comps _______________________
-// const Nav = lazy(() => import("./AlternateComponents/Nav/Nav"));
+
 import Nav from "./AlternateComponents/Nav/Nav";
+import Footer from "./AlternateComponents/Footer/Footer";
+// // Pages
+
 const LoginPage = lazy(() =>
   import("./AlternateComponents/Pages/LoginPage/LoginPage")
+);
+const UserWishlistPage = lazy(() =>
+  import("./AlternateComponents/Pages/UserWishlistPage/UserWishlistPage")
+);
+const NotificationPage = lazy(() =>
+  import("./AlternateComponents/Pages/NotificationPage")
 );
 const SignupPage = lazy(() =>
   import("./AlternateComponents/Pages/SignupPage/SignupPage")
 );
-const Home = lazy(() =>
+const HomePage = lazy(() =>
   import("./AlternateComponents/Pages/HomePage/HomePage")
 );
-const Dashboard = lazy(() =>
+const DashboardPage = lazy(() =>
   import("./AlternateComponents/Pages/DashboardPage/DashboardPage")
 );
-// import { pullUserFromLocal } from "./components/common/FunctionsLibrary";
-// import {
-//   FriendsContext,
-//   WishlistContext,
-//   NotificationContext,
-// } from "./components/common/context/context";
 
-// const Dashboard = lazy(() => import("./components/Dashboard/Dashboard"));
-// // const Map = lazy(() => import("./components/common/GoogleMaps/Map"));
-
-// const NotificationPage = lazy(() =>
-//   import("./components/Notification/NotificationPage")
-// );
-// const UserWishlist = lazy(() =>
-//   import("./components/UserWishlist/UserWishlist")
-// );
-// const AddWishlist = lazy(() => import("./components/AddWishlist/AddWishlist"));
-// const EditWishlist = lazy(() =>
-//   import("./components/EditWishlist/EditWishlist")
-// );
-// const FoundUser = lazy(() => import("./components/FoundUser/FoundUser"));
-
-// // COMPONENTS
-// const SignUpPage = lazy(() => import("./components/SignUpPage/Signup"));
-// const SearchPage = lazy(() => import("./components/SearchPage/SearchPage"));
-// const Nav = lazy(() => import("./components/Nav/Nav"));
-// const SidebarNav = lazy(() => import("./components/SidebarNav/SidebarNav"));
-// const Home = lazy(() => import("./components/Home/Home"));
-// const Footer = lazy(() => import("./components/Footer/Footer"));
-// const Login = lazy(() => import("./components/Login/Login"));
-// const FriendList = lazy(() => import("./components/FriendList/FriendList"));
-// const FriendsProfile = lazy(() =>
-//   import("./components/FriendsProfile/FriendsProfile")
-// );
-// const EditableUserProfile = lazy(() =>
-//   import("./components/Dashboard/EditableUserProfile/EditableUserProfile")
-// );
-// const GoogleProductPage = lazy(() =>
-//   import("./components/GoogleProductPage/GoogleProductPage")
-// );
+const GoogleProductPage = lazy(() =>
+  import("./components/GoogleProductPage/GoogleProductPage")
+);
 
 function App() {
   useAuthHooks();
@@ -71,38 +44,6 @@ function App() {
     state: { user },
   } = useContext(AuthContext);
 
-  // const [user, setUser] = useState(null);
-  // const [FriendsData, setFriendsData] = useState(null);
-  // const [WishlistData, setWishlistData] = useState([]);
-  // const [toggleUpdate, setToggleUpdate] = useState(false);
-  // const [NotificationsData, setNotificationsData] = useState([]);
-  // const [SentRequest, setSentRequest] = useState([]);
-
-  // const FriendsContextValue = {
-  //   setFriendsData,
-  //   FriendsData,
-  //   toggleUpdate,
-  //   setToggleUpdate,
-  // };
-  // const WishlistContextValue = {
-  //   WishlistData,
-  //   toggleUpdate,
-  //   setWishlistData,
-  //   setToggleUpdate,
-  // };
-  // const NotificationContextValue = {
-  //   NotificationsData,
-  //   toggleUpdate,
-  //   SentRequest,
-  //   setNotificationsData,
-  //   setToggleUpdate,
-  //   setSentRequest,
-  // };
-
-  // useEffect(() => {
-  //   let storedUser = pullUserFromLocal();
-  //   setUser(storedUser);
-  // }, []);
   return (
     <Suspense fallback={<Spinner />}>
       <ToastContainer autoClose={3000} />
@@ -111,14 +52,38 @@ function App() {
         <main className={user && "page-container"}>
           <div className={user && "page-container__content"}>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route
                 path="/dashboard"
                 element={
                   <PrivateRoute>
-                    <Dashboard />
+                    <DashboardPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/google-products"
+                element={
+                  <PrivateRoute>
+                    <GoogleProductPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/user-wishlist"
+                element={
+                  <PrivateRoute>
+                    <UserWishlistPage />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/notifications"
+                element={
+                  <PrivateRoute>
+                    <NotificationPage />
                   </PrivateRoute>
                 }
               />
@@ -126,120 +91,9 @@ function App() {
           </div>
         </main>
       </Router>
+      <Footer />
     </Suspense>
   );
-
-  // return (
-  //   <Suspense fallback={<Spinner />}>
-  //     <Router>
-  //       <ToastContainer autoClose={3000} />
-  //       <Nav user={user} setUser={setUser} />
-  //       <main className={user ? "page-content-container" : ""}>
-  //         <div className={user ? "page-content" : ""}>
-  //           <NotificationContext.Provider value={NotificationContextValue}>
-  //             <FriendsContext.Provider value={FriendsContextValue}>
-  //               {user && <SidebarNav />}
-  //             </FriendsContext.Provider>
-  //           </NotificationContext.Provider>
-  //           <Routes>
-  //             <Route
-  //               path="/search-page"
-  //               element={
-  //                 <NotificationContext.Provider
-  //                   value={NotificationContextValue}
-  //                 >
-  //                   <FriendsContext.Provider value={FriendsContextValue}>
-  //                     <SearchPage />
-  //                   </FriendsContext.Provider>
-  //                 </NotificationContext.Provider>
-  //               }
-  //             />
-  //             <Route path="/signup" element={<SignUpPage />} />
-  //             <Route path="/" element={<Home />} />
-  //             <Route path="/login" element={<Login setUser={setUser} />} />
-  //             <Route path="/users/:id" element={<FoundUser />} />
-  //             <Route
-  //               path="/dashboard/:id/new"
-  //               element={
-  //                 <WishlistContext.Provider value={WishlistContextValue}>
-  //                   <AddWishlist user={user} />
-  //                 </WishlistContext.Provider>
-  //               }
-  //             />
-  //             <Route
-  //               path="/dashboard/notification"
-  //               element={
-  //                 <NotificationContext.Provider
-  //                   value={NotificationContextValue}
-  //                 >
-  //                   <FriendsContext.Provider value={FriendsContextValue}>
-  //                     <NotificationPage />
-  //                   </FriendsContext.Provider>
-  //                 </NotificationContext.Provider>
-  //               }
-  //             />
-  //             <Route
-  //               path="/dashboard/:id/userwishlist"
-  //               element={
-  //                 <WishlistContext.Provider value={WishlistContextValue}>
-  //                   <UserWishlist user={user} />
-  //                 </WishlistContext.Provider>
-  //               }
-  //             />
-  //             <Route
-  //               path="/dashboard/:id/edit"
-  //               element={
-  //                 <WishlistContext.Provider value={WishlistContextValue}>
-  //                   <EditWishlist />
-  //                 </WishlistContext.Provider>
-  //               }
-  //             />
-  //             <Route
-  //               path="/dashboard/:id"
-  //               element={
-  //                 <FriendsContext.Provider value={FriendsContextValue}>
-  //                   <Dashboard user={user} />
-  //                 </FriendsContext.Provider>
-  //               }
-  //             />
-
-  //             <Route
-  //               path="/dashboard/:id/friends"
-  //               element={
-  //                 <FriendsContext.Provider value={FriendsContextValue}>
-  //                   <FriendList />
-  //                 </FriendsContext.Provider>
-  //               }
-  //             />
-  //             <Route
-  //               path="/dashboard/:id/friends/:friendId"
-  //               element={
-  //                 <FriendsContext.Provider value={FriendsContextValue}>
-  //                   <FriendsProfile />
-  //                 </FriendsContext.Provider>
-  //               }
-  //             />
-
-  //             <Route
-  //               path="/dashboard/:id/editProfile"
-  //               element={
-  //                 <WishlistContext.Provider value={WishlistContextValue}>
-  //                   <EditableUserProfile user={user} />
-  //                 </WishlistContext.Provider>
-  //               }
-  //             />
-  //             {/* <Route path="/dashboard/events" element={<Map />} /> */}
-  //             <Route
-  //               path="/dashboard/search-product"
-  //               element={<GoogleProductPage />}
-  //             />
-  //           </Routes>
-  //         </div>
-  //       </main>
-  //       <Footer user={user} setUser={setUser} />
-  //     </Router>
-  //   </Suspense>
-  // );
 }
 
 export default App;

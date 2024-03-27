@@ -23,4 +23,13 @@ async function signupSession(data) {
     return error;
   }
 }
-export { spinUpServer, loginSession, signupSession };
+
+async function grabUsersFriends(id) {
+  try {
+    const response = await Axios.get(`/alt/friends/${id}`);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+export { spinUpServer, loginSession, signupSession, grabUsersFriends };

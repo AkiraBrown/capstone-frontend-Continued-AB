@@ -1,8 +1,8 @@
 import Axios from "./Axios";
 
-async function handleUserSearch(data) {
+async function handleUserSearch(searchTerm) {
   try {
-    let response = await Axios.get(`/serp/search/?search=${data}`);
+    let response = await Axios.get(`/serp/search/?search=${searchTerm}`);
     return response.data;
   } catch (error) {
     return error;

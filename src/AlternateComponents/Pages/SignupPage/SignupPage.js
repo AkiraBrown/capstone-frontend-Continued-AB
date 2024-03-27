@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { IoIosWarning } from "react-icons/io";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ import { signupSession } from "../../API/API";
 import useAuthHooks from "../../hooks/auth/useAuthHooks";
 function SignupPage() {
   const [checkToken] = useAuthHooks();
+  const [userImageLink, setUserImageLink] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if (checkToken()) {
@@ -26,14 +27,19 @@ function SignupPage() {
     e.preventDefault();
     try {
       // user_picture is needed before we can test signup
-      await signupSession({
+      const format = {
         first_name,
         last_name,
         dob,
         email,
         password,
+        user_picture: userImageLink,
         user_name: usernameInput,
-      });
+      };
+      const result = await signupSession(format);
+      console.log(result);
+      navigate("/login");
+      toast.success("Account Created Successfully", toast.POSITION.TOP_CENTER);
     } catch (error) {
       if (process.env.NODE_ENV === "development") console.log(error);
       toast.error("User not found", toast.POSITION.TOP_CENTER);
@@ -170,6 +176,17 @@ function SignupPage() {
               onChange={(e) => setLastName(e.target.value)}
               onFocus={() => setLastNameOnFocus(true)}
               onBlur={() => setLastNameOnBlur(true)}
+            />
+          </div>
+          <div className="signup__form__container__input-group">
+            <input
+              type="text"
+              className="signup__form__container__input-group__input"
+              id="user_picture"
+              value={userImageLink}
+              onChange={(e) => setUserImageLink(e.target.value)}
+              required
+              placeholder="Picture Link"
             />
           </div>
           <div className="signup__form__container__input-group">

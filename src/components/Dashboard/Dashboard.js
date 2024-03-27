@@ -136,7 +136,7 @@ function Friend({ friendDetails, dashboardUserId, currentDate }) {
   }
 
   let sign = calculateZodiacSign(dobInMili, user_id);
-  let userPic = user_picture.includes("http")? user_picture : profileImg;
+  let userPic = user_picture.includes("http") ? user_picture : profileImg;
 
   return (
     <div className={friendContentClassNames()} key={user_id}>
@@ -152,13 +152,11 @@ function Friend({ friendDetails, dashboardUserId, currentDate }) {
           }`}
         >
           <div className="dashboard-friend-card-left">
-            {/* <div className="dashboard-img-placeholder"> */}
             <img
               className="dashboard-img-placeholder"
               src={userPic}
               alt="profile_img"
             />
-            {/* </div> */}
             <p className="dashboard-card-name">
               {first_name} {last_name}{" "}
             </p>

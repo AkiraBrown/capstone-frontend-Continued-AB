@@ -22,7 +22,7 @@ const UserWishlistPage = lazy(() =>
   import("./AlternateComponents/Pages/UserWishlistPage/UserWishlistPage")
 );
 const NotificationPage = lazy(() =>
-  import("./AlternateComponents/Pages/NotificationPage")
+  import("./AlternateComponents/Pages/NotificationPage/NotificationPage")
 );
 const SignupPage = lazy(() =>
   import("./AlternateComponents/Pages/SignupPage/SignupPage")
@@ -90,8 +90,8 @@ function App() {
             </Routes>
           </div>
         </main>
+        <Footer />
       </Router>
-      <Footer />
     </Suspense>
   );
 }

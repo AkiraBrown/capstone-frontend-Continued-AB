@@ -13,6 +13,7 @@ import { AuthContext } from "./AlternateComponents/context/AuthContext/AuthConte
 
 import Nav from "./AlternateComponents/Nav/Nav";
 import Footer from "./AlternateComponents/Footer/Footer";
+import SidebarNav from "./AlternateComponents/SidebarNav/SidebarNav";
 // // Pages
 
 const LoginPage = lazy(() =>
@@ -35,7 +36,7 @@ const DashboardPage = lazy(() =>
 );
 
 const GoogleProductPage = lazy(() =>
-  import("./components/GoogleProductPage/GoogleProductPage")
+  import("./AlternateComponents/Pages/GoogleProductPage/GoogleProductPage")
 );
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Nav />
         <main className={user && "page-container"}>
           <div className={user && "page-container__content"}>
+            {user && <SidebarNav />}
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />

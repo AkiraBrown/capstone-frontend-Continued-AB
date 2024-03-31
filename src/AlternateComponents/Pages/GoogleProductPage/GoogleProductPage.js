@@ -1,7 +1,8 @@
 import { useState, lazy } from "react";
 import "./GoogleProductPage.scss";
-import { handleUserSearch } from "../API/SerpApi";
+import { handleUserSearch } from "../../API/SerpApi";
 import { toast } from "react-toastify";
+import { CiSearch } from "react-icons/ci";
 const ProductCard = lazy(() => import("./ProductCard/ProductCard"));
 
 function GoogleProductPage() {
@@ -44,13 +45,15 @@ function GoogleProductPage() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button type="submit" className="search-form__searchBtn">
-            Search
+            <CiSearch />
           </button>
         </form>
         <section className="products-container">
           {productArr.length === 0 || !productArr ? (
             <>
-              <h3>Search for some products</h3>
+              <h3 className="products-container__title">
+                Search for some products
+              </h3>
             </>
           ) : (
             <>

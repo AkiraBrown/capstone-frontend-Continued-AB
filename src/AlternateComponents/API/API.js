@@ -32,4 +32,18 @@ async function grabUsersFriends(id) {
     return error;
   }
 }
-export { spinUpServer, loginSession, signupSession, grabUsersFriends };
+async function addWishlistItem(data) {
+  try {
+    const response = await Axios.post(`/wishlist/add-item`, data);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+export {
+  spinUpServer,
+  loginSession,
+  signupSession,
+  grabUsersFriends,
+  addWishlistItem,
+};

@@ -174,5 +174,13 @@ function upcomingDateCalc(dob) {
     return upcomingDateWithNextYear;
   }
 }
+function formatDate(inputDate) {
+  const dateObject = new Date(inputDate);
+  const dateObjectESTTimeOffset = dateObject.getTimezoneOffset() * 60 * 1000;
+  dateObject.setTime(dateObject.getTime() + dateObjectESTTimeOffset);
+  const options = { month: "long", day: "numeric" };
+  const formattedDate = dateObject.toLocaleDateString("en-us", options);
+  return formattedDate;
+}
 
-export { calculateZodiacSign, upcomingDateCalc };
+export { calculateZodiacSign, upcomingDateCalc, formatDate };

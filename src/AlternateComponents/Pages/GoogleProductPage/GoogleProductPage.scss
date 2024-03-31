@@ -1,9 +1,13 @@
 .page-container {
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
   justify-self: center;
   text-align: center;
 }
 .search-form {
+  align-self: center;
+  display: flex;
   justify-self: center;
   margin: 30px;
   height: 30px;
@@ -11,15 +15,19 @@
     width: 300px;
     border-radius: 10px 0 0 10px;
   }
-  & button {
+  &__searchBtn {
+    background-color: #a057ffa8;
+    background-image: none;
     border-radius: 0 10px 10px 0;
   }
 }
 .products-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  // grid-template-columns: 30% 30% 30%;
-
+  justify-content: center;
   gap: 20px;
   text-align: center;
+  &__title {
+    text-align: center;
+  }
 }

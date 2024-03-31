@@ -86,7 +86,6 @@ function SidebarNav() {
             {user.dob ? formatDate(user.dob) : ""}
           </p>
         </div>
-
         <hr className="sidebarDivider" />
         <div className="sidebarListContainer">
           <ul className="sidebarList">

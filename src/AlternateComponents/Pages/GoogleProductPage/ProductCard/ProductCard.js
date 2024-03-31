@@ -1,6 +1,54 @@
-import React from "react";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 import "./ProductCard.scss";
+import { AuthContext } from "../../../context/AuthContext/AuthContext";
+import { addWishlistItem } from "../../../API/API";
 function ProductCard({ data }) {
+  const {
+    state: { user },
+  } = useContext(AuthContext);
+  async function addToWishlist() {
+    /*
+    user_id,
+    title,
+    link,
+    product_link,
+    product_id,
+    source,
+    price,
+    thumbnail,
+    delivery,
+    */
+
+    const formatDataObj = {
+      user_id: user.id,
+      title: data?.title,
+      link: data?.link,
+      product_link: data?.product_link,
+      product_id: data?.product_id,
+      source: data?.source,
+      price: data?.price,
+      thumbnail: data?.thumbnail,
+      delivery: data?.delivery,
+    };
+    // console.log(formatDataObj);
+    try {
+      const response = await addWishlistItem(formatDataObj);
+      console.log(response);
+
+      /*TODO
+      - We need a check to see if this item already exists on the user's wishlist
+      - Data needs to persist if the user logs in again
+          - create a context that grabs the user's wihslist and stores it
+          - compares user's wishlist to the against the results to see if it already is in wishlist
+          - Consideration towards performance is needed for this to work correctly
+      
+      */
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong", toast.POSITION.TOP_CENTER);
+    }
+  }
   return (
     <div className="card">
       <div className="card__image-container">
@@ -17,7 +65,9 @@ function ProductCard({ data }) {
         <p className="card__delivery">{data?.delivery}</p>
       </div>
 
-      <button className="card__wishlistBtn">Add to wishlist</button>
+      <button className="card__wishlistBtn" onClick={() => addToWishlist()}>
+        Add to wishlist
+      </button>
     </div>
   );
 }

@@ -8,18 +8,6 @@ function ProductCard({ data }) {
     state: { user },
   } = useContext(AuthContext);
   async function addToWishlist() {
-    /*
-    user_id,
-    title,
-    link,
-    product_link,
-    product_id,
-    source,
-    price,
-    thumbnail,
-    delivery,
-    */
-
     const formatDataObj = {
       user_id: user.id,
       title: data?.title,

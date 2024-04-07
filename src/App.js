@@ -1,5 +1,5 @@
 // DEPENDENCIES
-import React, { Suspense, lazy, useContext } from "react";
+import React, { Suspense, lazy, useContext, useState } from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,10 @@ import { ToastContainer } from "react-toastify";
 import Spinner from "./components/common/spinner/Spinner";
 import PrivateRoute from "./AlternateComponents/common/PrivateRoute/PrivateRoute";
 import useAuthHooks from "./AlternateComponents/hooks/auth/useAuthHooks";
+
+// Contexts
+
+import { WishlistContext } from "./AlternateComponents/context/common/Context";
 import { AuthContext } from "./AlternateComponents/context/AuthContext/AuthContext";
 
 //_________________ Import Page Comps _______________________
@@ -45,54 +49,59 @@ function App() {
     state: { user },
   } = useContext(AuthContext);
 
+  const [wishlist, setWishlist] = useState([]);
+  const wishlistStateContextValues = { wishlist, setWishlist };
+
   return (
     <Suspense fallback={<Spinner />}>
       <ToastContainer autoClose={3000} />
       <Router>
-        <Nav />
-        <main className={user && "page-container"}>
-          <div className={user && "page-container__content"}>
-            {user && <SidebarNav />}
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
-              <Route
-                path="/dashboard"
-                element={
-                  <PrivateRoute>
-                    <DashboardPage />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/google-products"
-                element={
-                  <PrivateRoute>
-                    <GoogleProductPage />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/user-wishlist"
-                element={
-                  <PrivateRoute>
-                    <UserWishlistPage />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/notifications"
-                element={
-                  <PrivateRoute>
-                    <NotificationPage />
-                  </PrivateRoute>
-                }
-              />
-            </Routes>
-          </div>
-        </main>
-        <Footer />
+        <WishlistContext.Provider value={wishlistStateContextValues}>
+          <Nav />
+          <main className={user && "page-container"}>
+            <div className={user && "page-container__content"}>
+              {user && <SidebarNav />}
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignupPage />} />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <PrivateRoute>
+                      <DashboardPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/google-products"
+                  element={
+                    <PrivateRoute>
+                      <GoogleProductPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/user-wishlist"
+                  element={
+                    <PrivateRoute>
+                      <UserWishlistPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/notifications"
+                  element={
+                    <PrivateRoute>
+                      <NotificationPage />
+                    </PrivateRoute>
+                  }
+                />
+              </Routes>
+            </div>
+          </main>
+          <Footer />
+        </WishlistContext.Provider>
       </Router>
     </Suspense>
   );

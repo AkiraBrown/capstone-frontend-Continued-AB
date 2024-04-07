@@ -1,12 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "./ProductCard.scss";
 import { AuthContext } from "../../../context/AuthContext/AuthContext";
+import { WishlistContext } from "../../../context/common/Context";
 import { addWishlistItem } from "../../../API/API";
 function ProductCard({ data }) {
+  const [exists, setExists] = useState(false);
   const {
     state: { user },
   } = useContext(AuthContext);
+  const { wishlist, setWishlist } = useContext(WishlistContext);
+  useEffect(() => {
+    setExists(
+      wishlist.filter(({ product_id }) => product_id === data.product_id)
+        .length !== 0
+    );
+
+    // eslint-disable-next-line
+  }, [wishlist]);
+
   async function addToWishlist() {
     const formatDataObj = {
       user_id: user.id,
@@ -22,7 +34,12 @@ function ProductCard({ data }) {
     // console.log(formatDataObj);
     try {
       const response = await addWishlistItem(formatDataObj);
-      console.log(response);
+
+      setWishlist([...wishlist, response]);
+      toast.success(
+        "Item has been added to wishlist",
+        toast.POSITION.TOP_CENTER
+      );
 
       /*TODO
       - We need a check to see if this item already exists on the user's wishlist
@@ -33,30 +50,35 @@ function ProductCard({ data }) {
       
       */
     } catch (error) {
-      console.log(error);
+      if (process.env.NODE_ENV === "development") console.log(error);
+
       toast.error("Something went wrong", toast.POSITION.TOP_CENTER);
     }
   }
   return (
-    <div className="card">
-      <div className="card__image-container">
-        <img
-          className="card__thumbnail"
-          src={data?.thumbnail}
-          alt={data?.product_id}
-        />
-      </div>
-      <div className="card__text-container">
-        <h4 className="card__title">{data?.title}</h4>
-        <p className="card__price">{data?.price}</p>
-        <p className="card__source">{data?.source}</p>
-        <p className="card__delivery">{data?.delivery}</p>
-      </div>
+    <>
+      {!exists && (
+        <div className="card">
+          <div className="card__image-container">
+            <img
+              className="card__thumbnail"
+              src={data?.thumbnail}
+              alt={data?.product_id}
+            />
+          </div>
+          <div className="card__text-container">
+            <h4 className="card__title">{data?.title}</h4>
+            <p className="card__price">{data?.price}</p>
+            <p className="card__source">{data?.source}</p>
+            <p className="card__delivery">{data?.delivery}</p>
+          </div>
 
-      <button className="card__wishlistBtn" onClick={() => addToWishlist()}>
-        Add to wishlist
-      </button>
-    </div>
+          <button className="card__wishlistBtn" onClick={() => addToWishlist()}>
+            Add to wishlist
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 

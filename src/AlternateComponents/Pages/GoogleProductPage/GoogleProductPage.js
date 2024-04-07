@@ -3,11 +3,13 @@ import "./GoogleProductPage.scss";
 import { handleUserSearch } from "../../API/SerpApi";
 import { toast } from "react-toastify";
 import { CiSearch } from "react-icons/ci";
+
 const ProductCard = lazy(() => import("./ProductCard/ProductCard"));
 
 function GoogleProductPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [productArr, setProductArr] = useState([]);
+
   // const [isLoading, setIsLoading] = useState(false);
 
   async function handleSubmit(e) {
@@ -32,6 +34,8 @@ function GoogleProductPage() {
     }
     // setIsLoading(false);
   }
+
+  //Task Create a modal to expand a selected item when clicked
 
   return (
     <>

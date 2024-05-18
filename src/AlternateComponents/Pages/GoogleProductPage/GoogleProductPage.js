@@ -20,13 +20,13 @@ function GoogleProductPage() {
       if (searchTerm) {
         const formatSearchTerm = searchTerm.replace(/[&=]/g, "");
         let response = await handleUserSearch(formatSearchTerm);
-        console.log(response);
         setProductArr(response);
       } else {
         throw new Error("Please submit a valid search term");
       }
     } catch (error) {
-      console.log(error);
+      if (process.env.NODE_ENV === "development") console.log(error);
+
       toast.error(
         "Please submit a valid search term",
         toast.POSITION.TOP_CENTER

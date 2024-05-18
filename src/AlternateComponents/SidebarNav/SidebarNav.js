@@ -4,7 +4,7 @@ import "./SidebarNav.scss";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext/AuthContext";
 import { formatDate } from "../common/Zodiac/ZodiacFunctionLib";
-
+// import failImage from "../../Assets/user-profile-img.webp";
 function SidebarNav() {
   const {
     state: { user },
@@ -37,6 +37,9 @@ function SidebarNav() {
             </li>
             <li className="sidebar__container__nav__list__item">
               <NavLink to={"/google-products"}>Look for products</NavLink>
+            </li>
+            <li className="sidebar__container__nav__list__item">
+              <NavLink to={"/search-friends"}>Find Friends</NavLink>
             </li>
           </ul>
         </div>

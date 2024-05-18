@@ -19,8 +19,8 @@ An app designed to keep you on top of your loved ones’ upcoming birthdays wher
 
 ### Deployed Links
 
-frontend: [Giftune on Netlify](https://giftune.netlify.app/)
-backend: [Giftune on Render](https://capstone-backend-er7b.onrender.com)
+frontend: [Giftune on Netlify(TBC)](https://giftune.netlify.app/)
+backend: [Giftune on Render(TBC)](https://capstone-backend-er7b.onrender.com)
 database: []()
 
 #### Blockers we had during development

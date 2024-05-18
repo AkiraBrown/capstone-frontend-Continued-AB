@@ -1,0 +1,12 @@
+.wishlist {
+  &__container {
+    &__empty {
+      padding: 10px;
+      border: 2px solid purple;
+      font-size: large;
+      border-radius: 10px;
+      font-family: "Hepta Slab", serif;
+      background-color: #ffe9e9;
+    }
+  }
+}

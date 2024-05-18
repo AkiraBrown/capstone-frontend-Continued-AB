@@ -43,6 +43,13 @@ const GoogleProductPage = lazy(() =>
   import("./AlternateComponents/Pages/GoogleProductPage/GoogleProductPage")
 );
 
+const FriendsProfilePage = lazy(() =>
+  import("./AlternateComponents/Pages/FriendsProfilePage/FriendsProfilePage")
+);
+const FindFriendsPage = lazy(() =>
+  import("./AlternateComponents/Pages/FindFriendsPage/FindFriendsPage")
+);
+
 function App() {
   useAuthHooks();
   const {
@@ -94,6 +101,22 @@ function App() {
                   element={
                     <PrivateRoute>
                       <NotificationPage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/friends/:id"
+                  element={
+                    <PrivateRoute>
+                      <FriendsProfilePage />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/search-friends"
+                  element={
+                    <PrivateRoute>
+                      <FindFriendsPage />
                     </PrivateRoute>
                   }
                 />

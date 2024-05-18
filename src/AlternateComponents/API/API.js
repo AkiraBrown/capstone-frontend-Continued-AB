@@ -13,7 +13,7 @@ async function spinUpServer() {
 // User account Calls
 async function loginSession(data) {
   try {
-    const response = await Axios.post("/alt/login", data);
+    const response = await Axios.post("/user/login", data);
     return response.data;
   } catch (error) {
     return error;
@@ -21,7 +21,16 @@ async function loginSession(data) {
 }
 async function signupSession(data) {
   try {
-    const response = await Axios.post("/alt/create-user", data);
+    const response = await Axios.post("/user/create-user", data);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+async function getAllUsers() {
+  try {
+    const response = await Axios.get("/user");
     return response.data;
   } catch (error) {
     return error;
@@ -101,4 +110,5 @@ export {
   updateItemFromWishlist,
   getUserFriendsList,
   addNewFriend,
+  getAllUsers,
 };

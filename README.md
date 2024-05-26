@@ -19,9 +19,8 @@ An app designed to keep you on top of your loved ones’ upcoming birthdays wher
 
 ### Deployed Links
 
-frontend: [Giftune on Netlify(TBC)](https://giftune.netlify.app/)
-backend: [Giftune on Render(TBC)](https://capstone-backend-er7b.onrender.com)
-database: []()
+frontend: [Giftune on Netlify](https://giftune.netlify.app/)
+backend: [Giftune on Render](https://capstone-backend-er7b.onrender.com)
 
 #### Blockers we had during development
 
@@ -97,5 +96,3 @@ npm start
 - [axios](https://www.npmjs.com/package/axios) - HTTP client
 
 ### Additional Notes
-
-Since this is a skeleton, the `.env` file is included in the repository. This is not recommended for production applications. The `.env` file should be added to the `.gitignore` file and the environment variables should be set in the production environment.

@@ -15,7 +15,6 @@ function GoogleProductPage() {
   async function handleSubmit(e) {
     e.preventDefault();
     // setIsLoading(true);
-
     try {
       if (searchTerm) {
         const formatSearchTerm = searchTerm.replace(/[&=]/g, "");
@@ -26,7 +25,6 @@ function GoogleProductPage() {
       }
     } catch (error) {
       if (process.env.NODE_ENV === "development") console.log(error);
-
       toast.error(
         "Please submit a valid search term",
         toast.POSITION.TOP_CENTER

@@ -10,7 +10,10 @@ import useAuthHooks from "./AlternateComponents/hooks/auth/useAuthHooks";
 
 // Contexts
 
-import { WishlistContext } from "./AlternateComponents/context/common/Context";
+import {
+  WishlistContext,
+  FriendsContext,
+} from "./AlternateComponents/context/common/Context";
 import { AuthContext } from "./AlternateComponents/context/AuthContext/AuthContext";
 
 //_________________ Import Page Comps _______________________
@@ -57,74 +60,78 @@ function App() {
   } = useContext(AuthContext);
 
   const [wishlist, setWishlist] = useState([]);
+  const [FriendsData, setFriendsData] = useState([]);
   const wishlistStateContextValues = { wishlist, setWishlist };
+  const friendsStateContextValues = { FriendsData, setFriendsData };
 
   return (
     <Suspense fallback={<Spinner />}>
       <ToastContainer autoClose={3000} />
       <Router>
-        <WishlistContext.Provider value={wishlistStateContextValues}>
-          <Nav />
-          <main className={user && "page-container"}>
-            <div className={user && "page-container__content"}>
-              {user && <SidebarNav />}
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/signup" element={<SignupPage />} />
-                <Route
-                  path="/dashboard"
-                  element={
-                    <PrivateRoute>
-                      <DashboardPage />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/google-products"
-                  element={
-                    <PrivateRoute>
-                      <GoogleProductPage />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/user-wishlist"
-                  element={
-                    <PrivateRoute>
-                      <UserWishlistPage />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/notifications"
-                  element={
-                    <PrivateRoute>
-                      <NotificationPage />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/friends/:id"
-                  element={
-                    <PrivateRoute>
-                      <FriendsProfilePage />
-                    </PrivateRoute>
-                  }
-                />
-                <Route
-                  path="/search-friends"
-                  element={
-                    <PrivateRoute>
-                      <FindFriendsPage />
-                    </PrivateRoute>
-                  }
-                />
-              </Routes>
-            </div>
-          </main>
-          <Footer />
-        </WishlistContext.Provider>
+        <FriendsContext.Provider value={friendsStateContextValues}>
+          <WishlistContext.Provider value={wishlistStateContextValues}>
+            <Nav />
+            <main className={user && "page-container"}>
+              <div className={user && "page-container__content"}>
+                {user && <SidebarNav />}
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/signup" element={<SignupPage />} />
+                  <Route
+                    path="/dashboard"
+                    element={
+                      <PrivateRoute>
+                        <DashboardPage />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route
+                    path="/google-products"
+                    element={
+                      <PrivateRoute>
+                        <GoogleProductPage />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route
+                    path="/user-wishlist"
+                    element={
+                      <PrivateRoute>
+                        <UserWishlistPage />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route
+                    path="/notifications"
+                    element={
+                      <PrivateRoute>
+                        <NotificationPage />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route
+                    path="/friends/:id"
+                    element={
+                      <PrivateRoute>
+                        <FriendsProfilePage />
+                      </PrivateRoute>
+                    }
+                  />
+                  <Route
+                    path="/search-friends"
+                    element={
+                      <PrivateRoute>
+                        <FindFriendsPage />
+                      </PrivateRoute>
+                    }
+                  />
+                </Routes>
+              </div>
+            </main>
+            <Footer />
+          </WishlistContext.Provider>
+        </FriendsContext.Provider>
       </Router>
     </Suspense>
   );

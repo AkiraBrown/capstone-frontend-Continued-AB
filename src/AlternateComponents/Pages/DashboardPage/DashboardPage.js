@@ -1,5 +1,6 @@
-import { useEffect, useContext, useState, lazy } from "react";
+import { useEffect, useContext, lazy } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
+import { FriendsContext } from "../../context/common/Context";
 import { grabUsersFriends } from "../../API/API";
 import { upcomingDateCalc } from "../../common/Zodiac/ZodiacFunctionLib";
 import "./DashboardPage.scss";
@@ -10,8 +11,7 @@ function DashboardPage() {
   const {
     state: { user },
   } = useContext(AuthContext);
-
-  const [FriendsData, setFriendsData] = useState([]);
+  const { FriendsData, setFriendsData } = useContext(FriendsContext);
 
   useEffect(() => {
     fetchFriendsData();
@@ -25,7 +25,6 @@ function DashboardPage() {
           friend.dobInMili = upcomingDateCalc(friend.dob);
         });
         formatFriends = formatFriends.sort((a, b) => a.dobInMili - b.dobInMili);
-        // console.log(formatFriends);
         setFriendsData(formatFriends);
       }
     } catch (error) {

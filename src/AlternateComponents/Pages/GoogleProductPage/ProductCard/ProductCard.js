@@ -70,9 +70,11 @@ function ProductCard({ data }) {
             <h4 className="card__title">{data?.title}</h4>
             <p className="card__price">{data?.price}</p>
             <p className="card__source">{data?.source}</p>
+            <a href={data?.link} target="_blank" rel="noreferrer">
+              Link
+            </a>
             <p className="card__delivery">{data?.delivery}</p>
           </div>
-
           <button className="card__wishlistBtn" onClick={() => addToWishlist()}>
             Add to wishlist
           </button>

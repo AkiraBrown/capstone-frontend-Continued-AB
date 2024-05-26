@@ -36,6 +36,14 @@ async function getAllUsers() {
     return error;
   }
 }
+async function getUsersExceptLoggedInUser(id) {
+  try {
+    const response = await Axios.get(`/user/all-except/${id}`);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
 
 //----------------Wishlist Calls--------------------//
 
@@ -111,4 +119,5 @@ export {
   getUserFriendsList,
   addNewFriend,
   getAllUsers,
+  getUsersExceptLoggedInUser,
 };

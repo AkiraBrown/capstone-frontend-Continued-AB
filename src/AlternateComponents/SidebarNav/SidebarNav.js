@@ -41,6 +41,9 @@ function SidebarNav() {
             <li className="sidebar__container__nav__list__item">
               <NavLink to={"/search-friends"}>Find Friends</NavLink>
             </li>
+            <li className="sidebar__container__nav__list__item">
+              <NavLink to={"/notifications"}>Notifications</NavLink>
+            </li>
           </ul>
         </div>
       </div>

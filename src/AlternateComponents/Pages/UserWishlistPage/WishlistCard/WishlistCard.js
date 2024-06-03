@@ -9,9 +9,7 @@ function WishlistCard({ data }) {
   async function handleDeleteWishlist() {
     try {
       const response = await deleteItemFromWishlist(data.id);
-      console.log(response);
       const formatWishlist = wishlist.filter((item) => item.id !== response.id);
-      console.log(formatWishlist);
       setWishlist(formatWishlist);
     } catch (error) {
       if (process.env.NODE_ENV === "development") console.log(error);

@@ -3,13 +3,13 @@ import "./FindFriendsPage.scss";
 // import { FaMagnifyingGlass } from "react-icons/fa6";
 import { getUsersExceptLoggedInUser } from "../../API/API";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
-import { FriendsContext } from "../../context/common/Context";
+// import { FriendsContext } from "../../context/common/Context";
 const UserList = lazy(() => import("./UserList/UserList"));
 function FindFriendsPage() {
   const {
     state: { user },
   } = useContext(AuthContext);
-  const { FriendsData } = useContext(FriendsContext);
+  // const { FriendsData } = useContext(FriendsContext);
   const [input, setInput] = useState("");
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
@@ -24,25 +24,11 @@ function FindFriendsPage() {
   async function fetchUsers() {
     try {
       const result = await getUsersExceptLoggedInUser(user?.id);
-      const formattedUsers = applyFriendStatus(result);
-      console.log(formattedUsers);
-      setAllUsers(formattedUsers);
+      console.log(result);
+      setAllUsers(result);
     } catch (error) {
       console.log(error);
     }
-  }
-
-  function applyFriendStatus(usersArr) {
-    let appliedArr = usersArr.map((item) => {
-      let changeItem = { ...item };
-      if (FriendsData.includes(item.id)) {
-        changeItem.is_friend = true;
-      } else {
-        changeItem.is_friend = false;
-      }
-      return changeItem;
-    });
-    console.log(appliedArr);
   }
 
   function handleChange(value) {

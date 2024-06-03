@@ -79,6 +79,7 @@ async function newNotification(data) {
     return error;
   }
 }
+
 async function deleteNotification(id) {
   try {
     let result = await Axios.delete(`/notification/${id}`);

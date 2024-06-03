@@ -106,6 +106,47 @@ async function addNewFriend(data) {
 }
 
 //------------------Notification Calls-------------------------//
+async function getNotificationById(id) {
+  try {
+    let result = await Axios.get(`/notification/${id}`);
+    return result.data;
+  } catch (error) {
+    return error;
+  }
+}
+async function newNotification(data) {
+  try {
+    let result = await Axios.post(`/notification/new-notification`, data);
+    return result.data;
+  } catch (error) {
+    return error;
+  }
+}
+async function deleteNotification(id) {
+  try {
+    let result = await Axios.delete(`/notification/${id}`);
+    return result.data;
+  } catch (error) {
+    return error;
+  }
+}
+async function updateNotification(data) {
+  try {
+    let result = await Axios.put(`/notification/update-notification`, data);
+    return result.data;
+  } catch (error) {
+    return error;
+  }
+}
+// Friends Routes
+async function deleteFriend(id, friendId) {
+  try {
+    let result = await Axios.delete(`/dashboard/${id}/friends/${friendId}`);
+    return result.data;
+  } catch (error) {
+    return error;
+  }
+}
 
 export {
   spinUpServer,
@@ -120,4 +161,9 @@ export {
   addNewFriend,
   getAllUsers,
   getUsersExceptLoggedInUser,
+  getNotificationById,
+  newNotification,
+  deleteNotification,
+  updateNotification,
+  deleteFriend,
 };

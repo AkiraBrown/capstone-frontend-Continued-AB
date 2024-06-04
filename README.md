@@ -96,3 +96,5 @@ npm start
 - [axios](https://www.npmjs.com/package/axios) - HTTP client
 
 ### Additional Notes
+
+Due to changes made with the styling of Giftune I've found it user to opt for using a CSS library that enables for consitent classnames across the web app

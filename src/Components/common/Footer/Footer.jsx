@@ -1,4 +1,4 @@
-import GiftuneLogo from "../../../assets/GiftuneLogoFooter.png";
+import GiftuneLogo from "../../assets/GiftuneLogoFooter.png";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext/AuthContext";

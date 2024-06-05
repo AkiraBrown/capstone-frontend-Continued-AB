@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext/AuthContext";
 import { NavLink } from "react-router-dom";
-import GiftuneLogo from "../../../assets/image_360.png";
+import GiftuneLogo from "../../assets/image_360.png";
 function Nav() {
   const {
     state: { user },

@@ -4,7 +4,7 @@ import { AuthContext } from "../../common/context/AuthContext/AuthContext";
 import { loginSession } from "../../API/API";
 import { jwtDecode } from "jwt-decode";
 import useAuthHooks from "../../common/hooks/Auth/useAuthHooks";
-import GiftuneLogo from "../../../assets/GiftuneLogo3Nav.png";
+import GiftuneLogo from "../../assets/GiftuneLogo3Nav.png";
 function LoginPage() {
   const [checkToken] = useAuthHooks();
   const { dispatch } = useContext(AuthContext);

@@ -1,6 +1,6 @@
-import couch from "../../../assets/couch.png";
-import calendar from "../../../assets/calender.png";
-import giftPhone from "../../../assets/gift-phone.png";
+import couch from "../../assets/couch.png";
+import calendar from "../../assets/calender.png";
+import giftPhone from "../../assets/gift-phone.png";
 
 function HomePage() {
   return (

@@ -4,21 +4,21 @@ const initialState = {
   friends: [],
 };
 
-function FriendsReducer(items, action) {
+function FriendsReducer(state, action) {
   switch (action.type) {
     case "add": {
-      return [...items, action];
+      return [...state, action];
     }
     case "overwrite": {
       return {
-        friends: items,
+        friends: state,
       };
     }
     case "delete": {
-      return items.filter((item) => item.id !== action.id);
+      return state.filter((item) => item.id !== action.id);
     }
     default: {
-      throw Error("Unknown action: " + action.type);
+      return state;
     }
   }
 }

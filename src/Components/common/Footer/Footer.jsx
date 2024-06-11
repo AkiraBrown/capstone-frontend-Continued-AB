@@ -53,11 +53,6 @@ function Footer() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link px-2 text-body-secondary" to={"/"}>
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
               <NavLink
                 className="nav-link px-2 text-body-secondary"
                 to={"/search-friends"}

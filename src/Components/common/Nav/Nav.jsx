@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext/AuthContext";
 import { NavLink } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
 import GiftuneLogo from "../../assets/image_360.png";
 function Nav() {
   const {
@@ -9,7 +10,10 @@ function Nav() {
   } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   return (
-    <header className="p-2 mb-2 border-bottom bg-gradient bg-body-primary">
+    <header
+      className="p-2 mb-2 border-bottom bg-gradient"
+      style={{ backgroundColor: "#DCBFFF" }}
+    >
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <NavLink
@@ -18,7 +22,7 @@ function Nav() {
           >
             <img src={GiftuneLogo} alt="logo" className="me-2" />
           </NavLink>
-          <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
             {user ? (
               <>
                 <li>
@@ -95,7 +99,7 @@ function Nav() {
           </ul>
           {user && (
             <>
-              <div className="dropdown text-end">
+              {/* <div className="dropdown text-end">
                 <NavLink
                   className="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                   data-bs-toggle="dropdown"
@@ -122,6 +126,11 @@ function Nav() {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink className="dropdown-item" to={"/dashboard"}>
+                      Dashboard
+                    </NavLink>
+                  </li>
+                  <li>
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
@@ -137,6 +146,88 @@ function Nav() {
                     </NavLink>
                   </li>
                 </ul>
+              </div> */}
+              {/*---------------- Divider---------- */}
+              <button
+                className="btn btn-outline-light"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasMenu"
+                aria-controls="offcanvasMenu"
+                onClick={() => setShow(!show)}
+              >
+                {/* &#9776; */}
+                <GiHamburgerMenu />
+              </button>
+              <div
+                className={`offcanvas offcanvas-start ${show ? "show" : ""}`}
+                data-bs-scroll="true"
+                tabIndex={-1}
+                id="offcanvasMenu"
+                aria-labelledby="offcanvasMenuLabel"
+              >
+                <div className="offcanvas-header ">
+                  <div className="d-flex flex-column">
+                    <img
+                      src={user?.user_picture}
+                      alt="profile_pic"
+                      className="rounded-circle mx-auto mb-4"
+                      width={64}
+                      height={64}
+                    />
+                    <h5 className="offcanvas-title" id="offcanvasMenuLabel">
+                      {user?.user_name}
+                    </h5>
+                  </div>
+                  <button
+                    className="btn-close "
+                    data-bs-dismiss="offcanvas mb-4"
+                    aria-label="Close"
+                    onClick={() => setShow(false)}
+                  />
+                </div>
+                <div className="offcanvas-body">
+                  <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to={"/"}>
+                        Home
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to={"/dashboard"}>
+                        Dashboard
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to={"/google-products"}>
+                        Search Products
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to={"/user-wishlist"}>
+                        Wishlist
+                      </NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to={"/about"}>
+                        About
+                      </NavLink>
+                    </li>
+                    <hr />
+                    <li className="nav-item">
+                      <NavLink
+                        className="nav-link"
+                        to={"/"}
+                        onClick={() => {
+                          dispatch({ type: "LOG_OUT" });
+                          window.localStorage.removeItem("jwtToken");
+                        }}
+                      >
+                        Logout
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </>
           )}

@@ -26,10 +26,10 @@ function DashboardPage() {
             (a, b) => a.dobInMili - b.dobInMili
           );
         });
-        dispatch({ type: "overwrite", friends: formatFriends });
+        dispatch({ formatFriends });
       }
     } catch (error) {
-      if (import.meta.env.Dev) console.log(error);
+      if (import.meta.env.DEV) console.log(error);
     }
   }
 

@@ -54,55 +54,57 @@ function App() {
           <FriendsReducerComp>
             <NotificationsReducerComp>
               <WishlistReducerComp>
-                <Nav />
-                {/* {user && <SidebarNav />} */}
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/signup" element={<SignupPage />} />
-                  <Route
-                    path="/dashboard"
-                    element={
-                      <PrivateRoute>
-                        <Dashboard />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route
-                    path="/google-products"
-                    element={
-                      <PrivateRoute>
-                        <GoogleProductPage />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route
-                    path="/user-wishlist"
-                    element={
-                      <PrivateRoute>
-                        <UserWishlistPage />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route
-                    path="/friends/:id"
-                    element={
-                      <PrivateRoute>
-                        <FriendsProfilePage />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route
-                    path="/search-friends"
-                    element={
-                      <PrivateRoute>
-                        <FindFriendsPage />
-                      </PrivateRoute>
-                    }
-                  />
-                  <Route path="/about" element={<AboutPage />} />
-                </Routes>
-                <Footer />
+                <main data-bs-theme="light">
+                  <Nav />
+                  {/* {user && <SidebarNav />} */}
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<SignupPage />} />
+                    <Route
+                      path="/dashboard"
+                      element={
+                        <PrivateRoute>
+                          <Dashboard />
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/google-products"
+                      element={
+                        <PrivateRoute>
+                          <GoogleProductPage />
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/user-wishlist"
+                      element={
+                        <PrivateRoute>
+                          <UserWishlistPage />
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/friends/:id"
+                      element={
+                        <PrivateRoute>
+                          <FriendsProfilePage />
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/search-friends"
+                      element={
+                        <PrivateRoute>
+                          <FindFriendsPage />
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route path="/about" element={<AboutPage />} />
+                  </Routes>
+                  <Footer />
+                </main>
               </WishlistReducerComp>
             </NotificationsReducerComp>
           </FriendsReducerComp>

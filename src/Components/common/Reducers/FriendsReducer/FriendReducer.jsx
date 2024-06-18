@@ -1,32 +1,28 @@
 import { useReducer, createContext } from "react";
 export const FriendsReducerContext = createContext({});
-const initialState = {
-  friends: [],
-};
+const initialState = [];
 
 function FriendsReducer(state, action) {
   switch (action.type) {
     case "add": {
       return [...state, action];
     }
-    case "overwrite": {
-      return {
-        friends: state,
-      };
-    }
     case "delete": {
       return state.filter((item) => item.id !== action.id);
     }
+    case "overwrite": {
+      return action.response;
+    }
     default: {
-      return state;
+      return action;
     }
   }
 }
 
 export default function FriendsReducerComponent({ children }) {
-  const [state, dispatch] = useReducer(FriendsReducer, initialState);
+  const [friendsState, dispatch] = useReducer(FriendsReducer, initialState);
   return (
-    <FriendsReducerContext.Provider value={{ state, dispatch }}>
+    <FriendsReducerContext.Provider value={{ friendsState, dispatch }}>
       {children}
     </FriendsReducerContext.Provider>
   );

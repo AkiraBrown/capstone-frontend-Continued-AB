@@ -1,31 +1,26 @@
 import { useReducer, createContext } from "react";
 export const WishlistReducerContext = createContext({});
-const initialState = {
-  wishlist: [],
-};
-function WishlistReducer(items, action) {
+const initialState = [];
+function WishlistReducer(state, action) {
   switch (action.type) {
     case "add": {
-      return [...items, action.addItem];
+      return [...state, action.response];
     }
     case "delete": {
-      return items.filter((item) => item.id !== action.id);
+      return state.filter((item) => item.id !== action.response.id);
     }
     case "overwrite": {
-      return {
-        wishlist: items,
-      };
+      return action.response;
     }
-
     default:
-      throw Error("Unknown action: " + action.type);
+      return state;
   }
 }
 
 export default function WishlistReducerComponent({ children }) {
-  const [state, dispatch] = useReducer(WishlistReducer, initialState);
+  const [wishlist, dispatch] = useReducer(WishlistReducer, initialState);
   return (
-    <WishlistReducerContext.Provider value={{ state, dispatch }}>
+    <WishlistReducerContext.Provider value={{ wishlist, dispatch }}>
       {children}
     </WishlistReducerContext.Provider>
   );

@@ -167,7 +167,7 @@ function Nav() {
                 aria-labelledby="offcanvasMenuLabel"
               >
                 <div className="offcanvas-header ">
-                  <div className="d-flex flex-column">
+                  <div className="d-flex flex-column justify-content-start">
                     <img
                       src={user?.user_picture}
                       alt="profile_pic"
@@ -176,15 +176,16 @@ function Nav() {
                       height={64}
                     />
                     <h5 className="offcanvas-title" id="offcanvasMenuLabel">
-                      {user?.user_name}
+                      {`${user?.first_name} ${user?.last_name}`}
                     </h5>
                   </div>
                   <button
-                    className="btn-close "
+                    className="btn-close justify-content-end pb-4"
                     data-bs-dismiss="offcanvas mb-4"
                     aria-label="Close"
                     onClick={() => setShow(false)}
                   />
+                  <hr />
                 </div>
                 <div className="offcanvas-body">
                   <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">

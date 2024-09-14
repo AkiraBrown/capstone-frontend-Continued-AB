@@ -9,7 +9,7 @@ import useAuthHooks from "./Components/common/hooks/Auth/useAuthHooks";
 import Spinner from "./Components/common/Spinner/Spinner";
 
 //Contexts
-// import { AuthContext } from "./Components/common/context/AuthContext/AuthContext";
+
 import FriendsReducerComp from "./Components/common/Reducers/FriendsReducer/FriendReducer";
 import NotificationsReducerComp from "./Components/common/Reducers/NotificationReducer/NotificationReducer";
 import WishlistReducerComp from "./Components/common/Reducers/WishlistReducer/WishlistReducer";
@@ -17,7 +17,6 @@ import WishlistReducerComp from "./Components/common/Reducers/WishlistReducer/Wi
 // Common Comps
 import Nav from "./Components/common/Nav/Nav";
 import Footer from "./Components/common/Footer/Footer";
-// import SidebarNav from "./Components/common/SidebarNav/SidebarNav";
 
 const LoginPage = lazy(() => import("./Components/Pages/LoginPage/LoginPage"));
 const UserWishlistPage = lazy(() =>
@@ -43,10 +42,6 @@ const AboutPage = lazy(() => import("./Components/Pages/AboutPage/AboutPage"));
 function App() {
   useAuthHooks();
 
-  // const {
-  //   state: { user },
-  // } = useContext(AuthContext);
-
   return (
     <>
       <Suspense fallback={<Spinner />}>
@@ -56,7 +51,6 @@ function App() {
               <WishlistReducerComp>
                 <main data-bs-theme="light">
                   <Nav />
-                  {/* {user && <SidebarNav />} */}
                   <Routes>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />

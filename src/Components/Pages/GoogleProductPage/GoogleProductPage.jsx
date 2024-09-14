@@ -47,7 +47,7 @@ function GoogleProductPage() {
             })}
           </>
         ) : (
-          <span className="mx-auto p-5">Search for some items</span>
+          <h1 className="mx-auto p-5">Search for some items</h1>
         )}
       </div>
     </div>

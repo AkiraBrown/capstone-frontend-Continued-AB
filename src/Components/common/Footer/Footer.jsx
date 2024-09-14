@@ -8,8 +8,11 @@ function Footer() {
     dispatch,
   } = useContext(AuthContext);
   return (
-    <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top sticky">
-      <p className="col-md-4 d-flex mb-0 text-body-secondary">
+    <footer
+      className="d-flex flex-wrap justify-content-between align-items-center py-3 border-top position-sticky bottom-0"
+      style={{ backgroundColor: "#DCBFFF" }}
+    >
+      <p className="col-md-4 d-flex mb-0 text-body-secondary p-2">
         © 2024 Giftune, Inc
       </p>
       <NavLink

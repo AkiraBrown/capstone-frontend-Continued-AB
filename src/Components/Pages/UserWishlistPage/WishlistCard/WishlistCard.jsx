@@ -14,29 +14,34 @@ function WishlistCard({ data }) {
   }
   return (
     <div className="col">
-      <div className="card" style={{ width: "18rem" }}>
+      <div className="card">
         <img
           src={data?.thumbnail}
           alt={data?.product_id}
-          className="card-img-top"
+          className="card-img-top p-3"
+          height={"300px"}
         />
-
         <div className="card-body">
-          <h5 className="card-title text-truncate">{data?.title}</h5>
-          <p className="card-text pt-2">{data?.source}</p>
-          <p className="card-text p-2">{data?.price}</p>
-          <div className="btn-group">
-            <button className="btn btn-outline-danger" onClick={handleClick}>
-              Delete
-            </button>
-            <a
-              href={data?.link}
-              target="_blank"
-              rel="noreferrer"
-              className="btn btn-outline-primary"
-            >
-              Link
-            </a>
+          <p className="card-title text-truncate">{data?.title}</p>
+          <p className="card-text text-truncate">{data?.source}</p>
+          <p className="card-text text-wrap">{data?.price}</p>
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="btn-group mx-auto">
+              <button
+                className="btn btn-sm btn-outline-secondary"
+                onClick={handleClick}
+              >
+                Delete
+              </button>
+              <a
+                href={data?.link}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-sm btn-outline-secondary"
+              >
+                Link
+              </a>
+            </div>
           </div>
         </div>
       </div>
